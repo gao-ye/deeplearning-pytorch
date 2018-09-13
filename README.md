@@ -1,2 +1,2 @@
 # deeplearning-pytorch
-deeplearning exampls using pytorch
+deeplearning exeampls using pytorch
