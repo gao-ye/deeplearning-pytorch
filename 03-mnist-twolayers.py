@@ -8,8 +8,6 @@ import time
 #begin time
 start = time.clock()
 
-
-
 #Hyper parameters
 input_size = 784
 hidden_size = 500
@@ -59,10 +57,10 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(net.parameters(), learning_rate)
 
 for epoch in range(num_epochs):
-	for i, (images, labels) in enumerate(train_loader):
+	for i, (images, labels) in enumerate(train_loader):	
 		images = Variable(images.view(-1, 28*28))
 		labels = Variable(labels)
-		
+
 		#forward + backward + optimizer
 		optimizer.zero_grad()
 		outputs = net(images)
@@ -71,11 +69,12 @@ for epoch in range(num_epochs):
 		optimizer.step()
 		
 			
-	if epoch+1 %5 ==0:
+	if ((epoch+1) %3 ==0):
 		#Test the model
 		correct = 0
 		total = 0
 		for images, labels in test_loader:
+			#cpu
 			images = Variable(images.view(-1, 28*28))
 			outputs = net(images)
 			_, pred = torch.max(outputs.data,1)
